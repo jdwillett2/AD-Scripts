@@ -8,7 +8,7 @@ ForEach ($computer in $computers)
     $status = @{"Name" = $computer} 
     $group = Get-ADComputer $computer -Properties memberOf | select -ExpandProperty memberOf
     $status["Group"] = "$group"
-    $OS = Get-ADComputer $computer -Properties OperatingSystem | select -ExpandPropert OperatingSystem
+    $OS = Get-ADComputer $computer -Properties OperatingSystem | select -ExpandProperty OperatingSystem
     $status["Operating System"] = $OS
     New-Object -TypeName PSObject -Property $status -OutVariable serverStatus
     $collection = $collection + $serverStatus
